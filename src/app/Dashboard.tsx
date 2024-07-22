@@ -10,11 +10,11 @@ export default function Dashboard() {
   console.log(data);
 
   const handleLogout = useCallback(async () => {
-    await signOut();
     if (data?.id_token)
       router.push(
-        `${process.env.NEXT_PUBLIC_IDENTITY_URL}/connect/endsession?id_token_hint=${data.id_token}&post_logout_redirect_uri=http://localhost:3001/`
+        `${process.env.NEXT_PUBLIC_IDENTITY_URL}/connect/endsession?id_token_hint=${data.id_token}&post_logout_redirect_uri=${process.env.NEXT_PUBLIC_APP_URL}`
       );
+    await signOut();
   }, [data?.id_token, router]);
 
   if (status === "loading") return <div>Loading...</div>;
