@@ -20,25 +20,24 @@ export default function Dashboard() {
 
   if (status === "loading") return <div>Loading...</div>;
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: "5px",
+      }}
+    >
       {!data && (
         <button onClick={() => signIn("BKMIdentityServer")}>LogIn</button>
       )}
       {data && (
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "5px",
-          }}
-        >
+        <div>
           <div>Hello, {data.user.name}</div>
-          <Link href="/about">About</Link>
           <button onClick={handleLogout}>Logout</button>
         </div>
       )}
+      <Link href="/about">About</Link>
     </div>
   );
 }

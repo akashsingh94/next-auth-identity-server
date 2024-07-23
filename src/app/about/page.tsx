@@ -1,5 +1,5 @@
+import { authOptions } from "@/lib";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function AboutPage() {
   const session = await getServerSession(authOptions);
