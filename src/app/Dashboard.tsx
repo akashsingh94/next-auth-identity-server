@@ -1,6 +1,7 @@
 "use client";
 
 import { signIn, signOut, useSession } from "next-auth/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useCallback } from "react";
 
@@ -24,10 +25,19 @@ export default function Dashboard() {
         <button onClick={() => signIn("BKMIdentityServer")}>LogIn</button>
       )}
       {data && (
-        <>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+            gap: "5px",
+          }}
+        >
           <div>Hello, {data.user.name}</div>
+          <Link href="/about">About</Link>
           <button onClick={handleLogout}>Logout</button>
-        </>
+        </div>
       )}
     </div>
   );
